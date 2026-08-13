@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskGlass - Modern Premium Todo App</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="glass-bg-container">
+    <div class="gradient-sphere sphere-1"></div>
+    <div class="gradient-sphere sphere-2"></div>
+    <div class="gradient-sphere sphere-3"></div>
+  </div>
+
+  <main class="app-container">
+    <header class="app-header">
+      <h1>TaskGlass</h1>
+      <p class="subtitle">A premium workspace to organize your day.</p>
+    </header>
+
+    <section class="todo-card">
+      <form id="todo-form" class="todo-form">
+        <input 
+          type="text" 
+          id="todo-input" 
+          placeholder="What would you like to achieve today?" 
+          required 
+          autocomplete="off"
+        >
+        <button type="submit" aria-label="Add Task">
+          <span class="btn-icon">+</span>
+        </button>
+      </form>
+
+      <div class="todo-stats">
+        <span id="stats-count">0 tasks left</span>
+      </div>
+
+      <div class="loading-spinner" id="loading-spinner">
+        <div class="spinner"></div>
+      </div>
+
+      <ul id="todo-list" class="todo-list">
+        <!-- Dynamic list items will be injected here -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Powered by Docker & GitHub Actions CI</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
