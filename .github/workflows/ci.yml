@@ -26,7 +26,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -t ${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${GITHUB_REF_NAME}-${SHORT_SHA}
+            -t ${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${GITHUB_REF_NAME}-${SHORT_SHA}\
             -f 01-todo-app/backend/Dockerfile \
             01-todo-app
 
