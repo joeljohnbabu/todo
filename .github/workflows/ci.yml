@@ -5,9 +5,7 @@ on:
     branches:
       - main
       - dev
-    tags:
-      -'V*'
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,13 +20,13 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker image
+      - name: Set Docker image tag
         run: |
-          docker build \
-            -t ${{ vars.DOCKERHUB_USERNAME }}/todo-backend:latest \
-            -f 01-todo-app/backend/Dockerfile \
-            01-todo-app
+          SHORT_SHA="${GITHUB_SHA::7}"
+          echo "IMAGE_TAG=${GITHUB_REF_NAME}-${SHORT_SHA}" >> "$GITHUB_ENV"
+
+      - name: Build Docker image
+        run: docker build -f backend/Dockerfile -t "${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${IMAGE_TAG}" backend
 
       - name: Push Docker image
-        run: |
-          docker push ${{ vars.DOCKERHUB_USERNAME }}/todo-backend:latest
+        run: docker push "${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${IMAGE_TAG}"
