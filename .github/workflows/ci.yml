@@ -20,7 +20,7 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-           - name: Set Docker image tag
+      - name: Set Docker image tag
         run: |
           SHORT_SHA="${GITHUB_SHA::7}"
           echo "IMAGE_TAG=${GITHUB_REF_NAME}-${SHORT_SHA}" >> "$GITHUB_ENV"
