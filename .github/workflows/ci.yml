@@ -24,11 +24,7 @@ jobs:
         run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Build Docker image
-        run: |
-          docker build \
-            -t ${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${GITHUB_REF_NAME}-${SHORT_SHA}\
-            -f 01-todo-app/backend/Dockerfile \
-            01-todo-app
+        run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${GITHUB_REF_NAME}-${SHORT_SHA} -f 01-todo-app/backend/Dockerfile 01-todo-app
 
       - name: Push Docker image
         run: |
