@@ -26,7 +26,7 @@ jobs:
           echo "IMAGE_TAG=${GITHUB_REF_NAME}-${SHORT_SHA}" >> "$GITHUB_ENV"
 
       - name: Build Docker image
-        run: docker build -f backend/Dockerfile -t "${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${IMAGE_TAG}" .
+        run: docker build -f backend/Dockerfile -t "${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${IMAGE_TAG}" backend
 
       - name: Push Docker image
         run: docker push "${{ vars.DOCKERHUB_USERNAME }}/todo-backend:${IMAGE_TAG}"
