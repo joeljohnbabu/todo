@@ -6,4 +6,5 @@ on:
 jobs:
   call-central-workflow:
     uses: joeljohnbabu/central-workflows/.github/workflows/docker-build.yml@main
-
+    with:
+      image_name: todo-backend
