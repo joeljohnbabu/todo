@@ -1,0 +1,9 @@
+name: Test Central Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-central-workflow:
+    uses: joeljohnbabu/central-workflows/.github/workflows/docker-build.yml@main
+
